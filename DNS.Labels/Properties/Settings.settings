@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DNS.Labels.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CompanyList" Type="System.String" Scope="User">
+      <Value Profile="(Default)">01,02,03,04,05,06,07,08,09,10</Value>
+    </Setting>
+    <Setting Name="NextBarcodeNo" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="BarcodePrefix" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PL</Value>
+    </Setting>
+    <Setting Name="BarcodeTypeList" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Code 39,Code 128,QRCode</Value>
+    </Setting>
+    <Setting Name="BarcodeType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Code 39</Value>
+    </Setting>
+    <Setting Name="ShowBarcodeText" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
