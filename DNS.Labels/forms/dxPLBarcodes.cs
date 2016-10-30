@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using DevExpress.XtraReports.UI;
+using static DNS.Labels.Utilities;
 
 namespace DNS.Labels
 {
@@ -20,12 +21,13 @@ namespace DNS.Labels
             InitializeComponent();
 
             // Read the settings file to pre-populate the controls.
-            _CompanyList = BuildCompanyList(Properties.Settings.Default.CompanyList);
             _NextBarcodeNo = Properties.Settings.Default.NextBarcodeNo;
-            _BarcodeTypeList = BuildBarcodeTypeList(Properties.Settings.Default.BarcodeTypeList);
             _BarcodeType = Properties.Settings.Default.BarcodeType;
             _ShowBarcodeText = Properties.Settings.Default.ShowBarcodeText;
             _Prefix = Properties.Settings.Default.BarcodePrefix;
+
+            _CompanyList = BuildCompanyList(Properties.Settings.Default.CompanyList);
+            _BarcodeTypeList = BuildBarcodeTypeList(Properties.Settings.Default.BarcodeTypeList);
         }
         private void dxPLBarcodes_Load(object sender, EventArgs e)
         {
@@ -42,13 +44,12 @@ namespace DNS.Labels
             BarcodePrefixTextEdit.EditValue = _Prefix;
             ShowBarcodeTextCheckEdit.EditValue = _ShowBarcodeText;
         }
-
         private void GenerateSimpleButton_Click(object sender, EventArgs e)
         {
             int ThisBarcodeNo = 0;
             try
             {
-                string TheEnteredBarcodeNo = Utilities.NZString(BarcodeStartNoTextEdit.EditValue, "");
+                string TheEnteredBarcodeNo = NZString(BarcodeStartNoTextEdit.EditValue, "");
                 if (string.IsNullOrEmpty(TheEnteredBarcodeNo)) throw new ApplicationException("Invalid barcode entered.");
 
                 if (!int.TryParse(TheEnteredBarcodeNo, out ThisBarcodeNo))
@@ -58,15 +59,15 @@ namespace DNS.Labels
             }
             catch 
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("You have entered an invalid start number for the Barcode.\nOnly numbers are allowed.", "Invalid Barcode");
+                ShowMessage("You have entered an invalid start number for the Barcode.\nOnly numbers are allowed.", "Invalid Barcode");
                 return;
             }
 
-            int NoPages = Utilities.NZInt(PageCountSpinEdit.Value, 1);
+            int NoPages = NZInt(PageCountSpinEdit.Value, 1);
             bool ShowBarcodeText = ShowBarcodeTextCheckEdit.Checked;
-            string Prefix = Utilities.NZString(BarcodePrefixTextEdit.EditValue.ToString(), "");
-            string CompanyNo = Utilities.NZString(CompanyNoComboBoxEdit.EditValue.ToString(), "");
-            string BarcodeType = Utilities.NZString(BarcodeTypeComboBoxEdit.EditValue, "");
+            string Prefix = NZString(BarcodePrefixTextEdit.EditValue.ToString(), "");
+            string CompanyNo = NZString(CompanyNoComboBoxEdit.EditValue.ToString(), "");
+            string BarcodeType = NZString(BarcodeTypeComboBoxEdit.EditValue, "");
 
             if (ManualCheckEdit.Checked)
             {
@@ -94,19 +95,10 @@ namespace DNS.Labels
             var ReportLayout = new dxBarcodePrint(BarcodeType, ShowBarcodeText) { DataSource = BarcodeList };
             ReportLayout.ShowPreviewDialog();
         }
-
         private void CancelSimpleButton_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private static List<string> BuildCompanyList(string ListOfCompanies)
-        {
-            return ListOfCompanies.Split(',').ToList();
-        }
-        private static List<string> BuildBarcodeTypeList(string ListOfBarcodeTypes)
-        {
-            return ListOfBarcodeTypes.Split(',').ToList();
-        }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using static DNS.Labels.Utilities;
+
 namespace DNS.Labels
 {
     public partial class dxSettings : DevExpress.XtraEditors.XtraForm
@@ -17,18 +19,17 @@ namespace DNS.Labels
             BarcodeTypeListTextEdit.EditValue = Properties.Settings.Default.BarcodeTypeList;
             SelectedBarcodeTypeTextEdit.EditValue = Properties.Settings.Default.BarcodeType;
         }
-
         private void SaveSimpleButton_Click(object sender, EventArgs e)
         {
             try
             {
                 // Read the controls.
-                int NextBarcodeNo = Utilities.NZInt(NextBarcodeNoTextEdit.EditValue, 1);
+                int NextBarcodeNo = NZInt(NextBarcodeNoTextEdit.EditValue, 1);
                 bool ShowBarcodeText = ShowBarcodeTextCheckEdit.Checked;
-                string BarcodePrefix = Utilities.NZString(BarcodePrefixTextEdit.EditValue.ToString(), "");
-                string CompanyList = Utilities.NZString(CompanyListTextEdit.EditValue, "");
-                string BarcodeTypeList = Utilities.NZString(BarcodeTypeListTextEdit.EditValue, "");
-                string SelectedBarcodeType = Utilities.NZString(SelectedBarcodeTypeTextEdit.EditValue, "");
+                string BarcodePrefix = NZString(BarcodePrefixTextEdit.EditValue.ToString(), "");
+                string CompanyList = NZString(CompanyListTextEdit.EditValue, "");
+                string BarcodeTypeList = NZString(BarcodeTypeListTextEdit.EditValue, "");
+                string SelectedBarcodeType = NZString(SelectedBarcodeTypeTextEdit.EditValue, "");
 
                 // Save any changes back to the settings file for next time.
                 Properties.Settings.Default.CompanyList = CompanyList;
@@ -41,11 +42,10 @@ namespace DNS.Labels
             }
             catch (Exception ex)
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show(string.Format("An error occurred while trying to update the settings.{0}{1}", Environment.NewLine, ex.Message));
+                ShowMessage(string.Format("An error occurred while trying to update the settings.{0}{1}", Environment.NewLine, ex.Message), "ERROR");
             }
             Close();
         }
-
         private void CancelSimpleButton_Click(object sender, EventArgs e)
         {
             Close();
