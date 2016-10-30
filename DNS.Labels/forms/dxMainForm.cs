@@ -13,6 +13,11 @@ namespace DNS.Labels
             var BarcodeForm = new dxPLBarcodes();
             BarcodeForm.Show();
         }
+        private void ManualBarcodesBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var BarcodeForm = new dxPLManualBarcodes();
+            BarcodeForm.Show();
+        }
 
         private void SettingsBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -30,5 +35,6 @@ namespace DNS.Labels
         {
             Close();
         }
+
     }
 }

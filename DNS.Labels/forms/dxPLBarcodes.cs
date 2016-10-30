@@ -76,12 +76,13 @@ namespace DNS.Labels
                 return;
             }
 
-            List<PLBarcodeData> BarcodeList = new List<PLBarcodeData>();
-            for (int i = 0; i < LABELS_PER_PAGE * NoPages; i++)
-            {
-                BarcodeList.Add(new PLBarcodeData(Prefix, CompanyNo, ThisBarcodeNo));
-                ThisBarcodeNo++;
-            }
+            List<PLBarcodeData> BarcodeList = BuildBarcodeData(Prefix, CompanyNo, ThisBarcodeNo, LABELS_PER_PAGE);
+            //List<PLBarcodeData> BarcodeList = new List<PLBarcodeData>();
+            //for (int i = 0; i < LABELS_PER_PAGE * NoPages; i++)
+            //{
+            //    BarcodeList.Add(new PLBarcodeData(Prefix, CompanyNo, ThisBarcodeNo));
+            //    ThisBarcodeNo++;
+            //}
 
             
             // Save any changes back to the settings file for next time.

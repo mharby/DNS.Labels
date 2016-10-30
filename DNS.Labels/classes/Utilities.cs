@@ -24,6 +24,17 @@ namespace DNS.Labels
             return BarcodeList;
         }
 
+        public static List<PLBarcodeData> BuildBarcodeData(string BarcodePrefix, string CompanyNo, int StartNo, int RowCount)
+        {
+            int ThisBarcodeNo = StartNo;
+            List<PLBarcodeData> BarcodeData = new List<PLBarcodeData>();
+            for (int i = 0; i < RowCount; i++)
+            {
+                BarcodeData.Add(new PLBarcodeData(BarcodePrefix, CompanyNo, ThisBarcodeNo));
+                ThisBarcodeNo++;
+            }
+            return BarcodeData;
+        }
         public static List<PLBarcodeData> BuildBarcodeData(string BarcodePrefix, string CompanyNo, List<PLManualBarcode> ManualBarcodeData, int RowCount)
         {
             List<PLBarcodeData> BarcodeData = new List<PLBarcodeData>();

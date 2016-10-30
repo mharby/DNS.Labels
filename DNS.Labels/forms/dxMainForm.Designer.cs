@@ -36,13 +36,15 @@
             this.PLCoversheetBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.SettingsBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.AboutBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.ExitBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.MainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.MainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.CoversheetsRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ToolsRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.MainRibbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.MainDefaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.ExitBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.ManualBarcodesBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.MainRibbon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,9 +58,10 @@
             this.PLCoversheetBarButtonItem,
             this.SettingsBarButtonItem,
             this.AboutBarButtonItem,
-            this.ExitBarButtonItem});
+            this.ExitBarButtonItem,
+            this.ManualBarcodesBarButtonItem});
             this.MainRibbon.Location = new System.Drawing.Point(0, 0);
-            this.MainRibbon.MaxItemId = 7;
+            this.MainRibbon.MaxItemId = 8;
             this.MainRibbon.Name = "MainRibbon";
             this.MainRibbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.MainRibbonPage});
@@ -116,6 +119,15 @@
             this.AboutBarButtonItem.Name = "AboutBarButtonItem";
             this.AboutBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AboutBarButtonItem_ItemClick);
             // 
+            // ExitBarButtonItem
+            // 
+            this.ExitBarButtonItem.Caption = "Exit";
+            this.ExitBarButtonItem.Glyph = ((System.Drawing.Image)(resources.GetObject("ExitBarButtonItem.Glyph")));
+            this.ExitBarButtonItem.Id = 6;
+            this.ExitBarButtonItem.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("ExitBarButtonItem.LargeGlyph")));
+            this.ExitBarButtonItem.Name = "ExitBarButtonItem";
+            this.ExitBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExitBarButtonItem_ItemClick);
+            // 
             // MainRibbonPage
             // 
             this.MainRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -128,6 +140,7 @@
             // MainRibbonPageGroup
             // 
             this.MainRibbonPageGroup.ItemLinks.Add(this.PLBarcodesBarButtonItem);
+            this.MainRibbonPageGroup.ItemLinks.Add(this.ManualBarcodesBarButtonItem);
             this.MainRibbonPageGroup.Name = "MainRibbonPageGroup";
             this.MainRibbonPageGroup.Text = "Barcodes";
             // 
@@ -157,14 +170,22 @@
             // 
             this.MainDefaultLookAndFeel.LookAndFeel.SkinName = "Office 2013";
             // 
-            // ExitBarButtonItem
+            // barButtonItem1
             // 
-            this.ExitBarButtonItem.Caption = "Exit";
-            this.ExitBarButtonItem.Glyph = ((System.Drawing.Image)(resources.GetObject("ExitBarButtonItem.Glyph")));
-            this.ExitBarButtonItem.Id = 6;
-            this.ExitBarButtonItem.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("ExitBarButtonItem.LargeGlyph")));
-            this.ExitBarButtonItem.Name = "ExitBarButtonItem";
-            this.ExitBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExitBarButtonItem_ItemClick);
+            this.barButtonItem1.Caption = "Purchase Ledger Barcodes";
+            this.barButtonItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.Glyph")));
+            this.barButtonItem1.Id = 1;
+            this.barButtonItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.LargeGlyph")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // ManualBarcodesBarButtonItem
+            // 
+            this.ManualBarcodesBarButtonItem.Caption = "Manual Barcodes";
+            this.ManualBarcodesBarButtonItem.Glyph = ((System.Drawing.Image)(resources.GetObject("ManualBarcodesBarButtonItem.Glyph")));
+            this.ManualBarcodesBarButtonItem.Id = 7;
+            this.ManualBarcodesBarButtonItem.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("ManualBarcodesBarButtonItem.LargeGlyph")));
+            this.ManualBarcodesBarButtonItem.Name = "ManualBarcodesBarButtonItem";
+            this.ManualBarcodesBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ManualBarcodesBarButtonItem_ItemClick);
             // 
             // dxMainForm
             // 
@@ -199,5 +220,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup CoversheetsRibbonPageGroup;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ToolsRibbonPageGroup;
         private DevExpress.XtraBars.BarButtonItem ExitBarButtonItem;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem ManualBarcodesBarButtonItem;
     }
 }
